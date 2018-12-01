@@ -6,6 +6,7 @@ public class WallkAndShoot : MonoBehaviour {
 
     public GameObject pokeball;
     public float shootSpeed = 10;
+    public float speed=2f;
 	// Use this for initialization
 	void Start () {
 		
@@ -13,6 +14,7 @@ public class WallkAndShoot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        transform.position += Camera.main.transform.forward * speed * Time.deltaTime;
         if (Input.GetButtonDown("Fire1"))
         {
             var pokego= Instantiate(pokeball);
