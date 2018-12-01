@@ -9,6 +9,10 @@ public class MCalculator : MonoBehaviour {
     public TextMesh totalMonster;
     public float timeRemaining;
     public TextMesh timerText;
+    public bool daynight = true;
+
+    private const string day ="DayScene";
+    private const string night ="NightScene";
     public void DisplayScore()
     {
         totalMonster.text = score.ToString();
@@ -17,17 +21,35 @@ public class MCalculator : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         totalMonster.text = score.ToString();
+        Scene scene = SceneManager.GetActiveScene();
+        if(scene.name==day)
+        {
+            daynight = false;
+        }
+        else if(scene.name==night)
+        {
+            daynight = true;
+        }
 
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         //DisplayScore();
         timeRemaining -=  Time.deltaTime;
         timerText.text = Mathf.Floor(timeRemaining).ToString();
         if(timeRemaining<1)
         {
-            SceneManager.LoadScene("NightScene");
+            if (daynight)
+            {
+                SceneManager.LoadScene("DayScene");
+                daynight = !daynight;
+            }
+            else
+            {
+                SceneManager.LoadScene("NightScene");
+                daynight = !daynight;
+            }            
         }
     }
 }
