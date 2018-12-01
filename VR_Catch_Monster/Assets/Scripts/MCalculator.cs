@@ -27,7 +27,7 @@ public class MCalculator : MonoBehaviour {
         timerText.text = Mathf.Floor(timeRemaining).ToString();
         if(timeRemaining<1)
         {
-            SceneManager.LoadScene("EndScene");
+            SceneManager.LoadScene("NightScene");
         }
     }
 }
