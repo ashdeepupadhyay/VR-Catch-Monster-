@@ -5,11 +5,12 @@ using UnityEngine;
 public class CollectMonsters : MonoBehaviour {
 
     MCalculator mcalc;
+    CalculateScore calScore;
     public void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("redmonster")|| other.CompareTag("bluemonster")|| other.CompareTag("violetmonster")|| other.CompareTag("yellowmonster"))
         {
-            mcalc.score++;
+            calScore.score++;
             mcalc.DisplayScore();
             Destroy(other.gameObject);
             Destroy(gameObject);
@@ -27,7 +28,8 @@ public class CollectMonsters : MonoBehaviour {
     // Use this for initialization
     void Start () {
         mcalc = FindObjectOfType<MCalculator>();
-	}
+        calScore = FindObjectOfType<CalculateScore>();
+    }
 	
 	// Update is called once per frame
 	void Update () {

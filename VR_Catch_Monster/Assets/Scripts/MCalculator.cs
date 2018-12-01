@@ -5,32 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class MCalculator : MonoBehaviour {
 
-    public int score;
+    CalculateScore calscore;
     public TextMesh totalMonster;
     public float timeRemaining;
-    public TextMesh timerText;
-    public bool daynight = true;
-
-    private const string day ="DayScene";
-    private const string night ="NightScene";
-    public void DisplayScore()
-    {
-        totalMonster.text = score.ToString();
-        //Debug.Log("the score is " + score);
-    }
+    public TextMesh timerText;  
+    
 	// Use this for initialization
 	void Start () {
-        totalMonster.text = score.ToString();
-        Scene scene = SceneManager.GetActiveScene();
-        if(scene.name==day)
-        {
-            daynight = false;
-        }
-        else if(scene.name==night)
-        {
-            daynight = true;
-        }
-
+        calscore = FindObjectOfType<CalculateScore>();
+        totalMonster.text = calscore.score.ToString();       
     }
 
     // Update is called once per frame
@@ -40,16 +23,12 @@ public class MCalculator : MonoBehaviour {
         timerText.text = Mathf.Floor(timeRemaining).ToString();
         if(timeRemaining<1)
         {
-            if (daynight)
-            {
-                SceneManager.LoadScene("DayScene");
-                daynight = !daynight;
-            }
-            else
-            {
-                SceneManager.LoadScene("NightScene");
-                daynight = !daynight;
-            }            
+            SceneManager.LoadScene("MenuEndScene");                      
         }
+    }
+    public void DisplayScore()
+    {
+        totalMonster.text = calscore.score.ToString();
+        //Debug.Log("the score is " + score);
     }
 }

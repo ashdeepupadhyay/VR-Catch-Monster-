@@ -6,7 +6,7 @@ public class RandomMonsters : MonoBehaviour {
     public GameObject []differentMonstors;
 	// Use this for initialization
 	void Start () {
-        for(int i=0;i<100;i++)
+        for(int i=0;i<Random.Range(300,500);i++)
         {
             GenerateMonsters();
         }
