@@ -707,7 +707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalMonster: {fileID: 1245840831}
-  timeRemaining: 10
+  timeRemaining: 100
   timerText: {fileID: 36772123}
 --- !u!4 &1749304950
 Transform:
