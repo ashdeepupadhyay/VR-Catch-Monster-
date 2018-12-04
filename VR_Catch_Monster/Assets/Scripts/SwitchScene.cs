@@ -12,11 +12,13 @@ public class SwitchScene : MonoBehaviour,IPointerExitHandler,IPointerEnterHandle
 
     private const string day = "DayScene";
     private const string night = "NightScene";
+
+    MusicManager m;
     // Use this for initialization
     void Start ()
     {
-	    
-	}
+        m = FindObjectOfType<MusicManager>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -36,10 +38,12 @@ public class SwitchScene : MonoBehaviour,IPointerExitHandler,IPointerEnterHandle
         if(checkdaynight)
         {
             SceneManager.LoadScene(day);
+            m.OnLevelWasLoaded(1);
         }
         else
         {
             SceneManager.LoadScene(night);
+            m.OnLevelWasLoaded(2);
         }       
     }
 

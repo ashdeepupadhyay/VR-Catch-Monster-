@@ -8,12 +8,15 @@ public class MCalculator : MonoBehaviour {
     CalculateScore calscore;
     public TextMesh totalMonster;
     public float timeRemaining;
-    public TextMesh timerText;  
-    
-	// Use this for initialization
-	void Start () {
+    public TextMesh timerText;
+
+    MusicManager m;
+    // Use this for initialization
+    void Start () {
+        m = FindObjectOfType<MusicManager>();
         calscore = FindObjectOfType<CalculateScore>();
-        totalMonster.text = calscore.score.ToString();       
+        totalMonster.text = calscore.score.ToString();  
+        
     }
 
     // Update is called once per frame
@@ -23,7 +26,8 @@ public class MCalculator : MonoBehaviour {
         timerText.text = Mathf.Floor(timeRemaining).ToString();
         if(timeRemaining<1)
         {
-            SceneManager.LoadScene("MenuEndScene");                      
+            SceneManager.LoadScene("MenuEndScene");
+            m.OnLevelWasLoaded(3);
         }
     }
     public void DisplayScore()
